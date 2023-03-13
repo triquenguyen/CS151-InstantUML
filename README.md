@@ -25,7 +25,8 @@
 - Final product: a plugin in IntelliJ IDEA
 - Plan and approach
   - Research on the similar products currently found in the market, find their disadvantages and figure out to improve it in our product
-  - Research on how to develop a plugin for IntelliJ on their SDK platform (or draw.io) 
+  - Research on how to develop a plugin for IntelliJ on their SDK platform
+  - Weigh the advantages and disadvantages of different graphing APIs (Graphviz, mxGraph, etc.), to determine which would best suit our needs.  
   - Designing diagrams (Use case, class,state, etc.)
   - Develop the plugin based on the designed diagrams 
   - Develop testing strategy, to ensure the product runs smoothly and gets debugged on time before the official release
