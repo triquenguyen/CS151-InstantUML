@@ -42,6 +42,7 @@
 - Visualize/display relationships between classes
 - Allow editing of diagram generation layout when choosing package 
 - Selection of code to be used in diagram(s) (getters, setters, etc.)
+- Let the user add constraints {} to the diagram through an interface.  
 
 # References
 [1]. https://www.jetbrains.com/help/idea/class-diagram.html </br>
