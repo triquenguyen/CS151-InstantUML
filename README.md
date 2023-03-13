@@ -42,7 +42,11 @@
 - Allow editing of diagram generation layout when choosing package 
 - Selection of code to be used in diagram(s) (getters, setters, etc.)
 
-
+# References
+[1]. https://www.jetbrains.com/help/idea/class-diagram.html </br>
+[2]. https://plugins.jetbrains.com/plugin/15124-uml-generator/reviews </br>
+[3]. https://github.com/xukmin/magicuml </br>
+[4]. https://plugins.jetbrains.com/docs/intellij/welcome.html </br>
 
 
 
