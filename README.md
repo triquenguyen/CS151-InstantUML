@@ -26,8 +26,8 @@
 - Plan and approach
   - Research on the similar products currently found in the market, find their disadvantages and figure out to improve it in our product
   - Research on how to develop a plugin for IntelliJ on their SDK platform
-  - Weigh the advantages and disadvantages of different graphing APIs (Graphviz, mxGraph, etc.), to determine which would best suit our needs.  
   - Designing diagrams (Use case, class,state, etc.)
+  - Weigh the advantages and disadvantages of different graphing APIs (Graphviz, mxGraph, etc.), to determine which would best suit our needs.  
   - Develop the plugin based on the designed diagrams 
   - Develop testing strategy, to ensure the product runs smoothly and gets debugged on time before the official release
 
@@ -42,7 +42,7 @@
 - Visualize/display relationships between classes
 - Allow editing of diagram generation layout when choosing package 
 - Selection of code to be used in diagram(s) (getters, setters, etc.)
-- Let the user add constraints {} to the diagram through an interface.  
+- Let the user add constraints {} to the diagram. 
 
 # References
 [1]. https://www.jetbrains.com/help/idea/class-diagram.html </br>
