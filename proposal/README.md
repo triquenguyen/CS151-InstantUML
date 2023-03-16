@@ -19,13 +19,15 @@
     - A GitHub project from 7 years ago  
     - Does not have a GUI  
     - Seems to have to input each ```.java``` file individually in order to use it
-- Users should be able to use this product to generate their java code into a UML design of their choosing on their operating systems (Windows/Linux/MacOS). 
+- Users should be able to use this product to generate their java code into a UML design of their choosing on their operating systems (Windows/Linux/MacOS).
+- The UML class diagram will be automatically generated after the user input .java files.  
 
 # High-level Description	
 - Final product: a plugin in IntelliJ IDEA
 - Plan and approach
   - Research on the similar products currently found in the market, find their disadvantages and figure out to improve it in our product
   - Research on how to develop a plugin for IntelliJ on their SDK platform
+  - Determine which parts of the UML diagram can be automatically generated, and which parts may need user input.  
   - Designing diagrams (Use case, class,state, etc.)
   - Weigh the advantages and disadvantages of different graphing APIs (Graphviz, mxGraph, etc.), to determine which would best suit our needs.  
   - Develop the plugin based on the designed diagrams 
