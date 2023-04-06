@@ -64,19 +64,39 @@ public class UMLMap {
          }
 
          // Set up Buffered reader to read class, field, and method signatures
-         BufferedReader r =
+         BufferedReader reader =
                  new BufferedReader(new InputStreamReader(p.getInputStream()));
-         String line = "";
-         String[] s;
-
-         // Collect the data and put into map
+         Box box = populateBox(reader); // Populate a box
 
 
-         while (line != null) {
+      }
 
+      /*
+      TODO After the Map has been population add the Association connections
+      by looking at the Field in the Box's Map.
+       */
 
+   }
 
-         }
+   /**
+    * Populates a box based off of data collected from one execution of a
+    * javap -p command. Also adds non-Association Connections.
+    *
+    * @param reader
+    * @return
+    */
+   private Box populateBox(BufferedReader reader) {
+
+      String line = "";
+      String[] s;
+
+      // TODO Read the second line to determine the BoxType
+
+      // Collect the Field and Method data to put in the map
+      while (line != null) {
+
+         // TODO read the
+
 
       }
 
