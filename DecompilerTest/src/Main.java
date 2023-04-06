@@ -9,6 +9,7 @@ public class Main {
 
       // Initialize the builder for the terminal commands
       ProcessBuilder builder = new ProcessBuilder();
+      builder.redirectErrorStream(true);
 
       // The path to the .class files in the out folder
       File main = new File("out/production/DecompilerTest/test_files");
@@ -23,7 +24,6 @@ public class Main {
          builder.command("cmd.exe", "/c", "javap -p " + file.getName());
 
          // line to start and run the process for each .class file
-         // builder.redirectErrorStream(true);
          Process p = builder.start();
          BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
          String line = "";

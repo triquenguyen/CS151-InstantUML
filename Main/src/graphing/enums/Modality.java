@@ -1,5 +1,8 @@
 package graphing.enums;
 
+/**
+ * Constants representing the Modality of UML diagram Association
+ */
 public enum Modality {
 
    ZERO_OR_ONE("0..1"), ONE("1"), ZERO_OR_MORE("0..*"),
@@ -11,6 +14,10 @@ public enum Modality {
       this.string = string;
    }
 
+   /**
+    * @return    The String representation of the kinds of modality that would
+    *            appear in a UML diagram.
+    */
    @Override
    public String toString() {
       return string;

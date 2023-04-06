@@ -1,24 +1,84 @@
 package graphing;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * Stores data from Java classes.  Uses javap command to collect data from the
+ * "out" folder in IntelliJ.  Holds the data in an outgoing graphical
+ *  representation.
+ */
 public class UMLMap {
 
-   private HashMap<Box, ArrayList<Node>> map;
+   private HashMap<Box, ArrayList<Node>> map; // Outgoing map.
    private File classesFile;
 
+   /**
+    * default constructor for UMLMap
+    */
    public UMLMap() {
       map = new HashMap<>();
       classesFile = null;
    }
 
+   /**
+    * @param classesFile    The File that contains
+    */
    public UMLMap(File classesFile) {
       map = new HashMap<>();
       this.classesFile = classesFile;
    }
 
+   /**
+    * Populates UMLMap with data from the file.
+    */
    public void populateMap() {
+
+      // Initialize Process builder for javap -p commands
+      ProcessBuilder builder = new ProcessBuilder();
+
+      // array of .class files in the out folder
+      File[] files = classesFile.listFiles();
+      builder.directory(classesFile);
+
+      for (File file : files) {
+
+         // TODO add an if condition that continues if class isn't one of the
+         // TODO ones selected by user.
+
+         // Commands to get the method and variable signatures
+         builder.command("cmd.exe", "/c", "javap -p " + file.getName());
+
+         // Start and run the process for each .class file
+         Process p = null;
+         try {
+            p = builder.start(); // Convert to builder into a process
+         }
+         catch (IOException ioException) {
+            ioException.getStackTrace();
+         }
+
+         // Set up Buffered reader to read class, field, and method signatures
+         BufferedReader r =
+                 new BufferedReader(new InputStreamReader(p.getInputStream()));
+         String line = "";
+         String[] s;
+
+         // Collect the data and put into map
+
+
+         while (line != null) {
+
+
+
+         }
+
+      }
 
    }
 
@@ -55,6 +115,13 @@ public class UMLMap {
     */
    public void setFile(File classesFile) {
       this.classesFile = classesFile;
+   }
+
+   /**
+    * @return   The Entry set for the internal map.
+    */
+   public Set<Map.Entry<Box, ArrayList<Node>>> getEntrySet() {
+      return map.entrySet();
    }
 
    /**
