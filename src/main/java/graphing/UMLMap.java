@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.lang.reflect.*;
 
 /**
  * Stores data from Java classes.  Uses javap command to collect data from the
@@ -99,7 +100,7 @@ public class UMLMap {
 
 
       }
-
+      return null;
    }
 
    /**

@@ -6,7 +6,7 @@ import graphing.enums.AccessModifier;
  * An abstract class for the data within the box.  Is extended by Method and
  * Field classes.
  */
-abstract class BoxData {
+public abstract class BoxData {
 
    private String name;
    private AccessModifier accessModifier;
