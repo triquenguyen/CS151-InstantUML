@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>org.example.HelloWorldPlugin</id>
-    <name>Hello World</name>
+    <id>org.example.InstantUML</id>
+    <name>InstantUML</name>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
     <description><![CDATA[
@@ -14,13 +14,33 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <toolWindow id="InstantUML"
+                    anchor="right"
+                    factoryClass="ui.PluginToolWindowFactory">
+        </toolWindow>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
-        <action id="helloworld" class="actions.HelloWorldAction" text="Hello World">
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"></add-to-group>
+        <action id="generateDiagram"
+                class="actions.GenerateDiagram"
+                text="Generate">
         </action>
+
+        <action id="removeConnectionlessBoxes"
+                class="actions.RemoveConnectionlessBoxes"
+                text="Remove Non-Connected Boxes">
+        </action>
+
+
+        <group id="UI.Toolbar" >
+            <reference ref="generateDiagram"/>
+    </group>
+
+        <group id="UI.OperationMenu" text="Operations" popup="true">
+            <add-to-group group-id="UI.Toolbar" anchor="after" relative-to-action="UI.OperationMenu"/>
+            <reference ref="removeConnectionlessBoxes"/>
+        </group>
 
     </actions>
 </idea-plugin>
