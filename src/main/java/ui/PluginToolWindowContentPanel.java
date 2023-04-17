@@ -3,10 +3,12 @@ package ui;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
-import com.intellij.openapi.actionSystem.impl.ActionMenu;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
-import org.apache.tools.ant.Project;
+import org.kohsuke.graphviz.Graph;
+import org.kohsuke.graphviz.Node;
 
+
+import java.awt.*;
 import java.util.LinkedList;
 
 public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
@@ -25,6 +27,7 @@ public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
               (ActionGroup) actionManager.getAction("UI.Toolbar"),
               true);
       setToolbar(actionToolbar.getComponent());
+
 
 
 

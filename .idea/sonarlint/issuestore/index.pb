@@ -1,0 +1,25 @@
+
+P
+ src/main/java/InstantUMLIcons.kt,a\4\a4c1e19d46872f7e6a40e5770bcc9a120238497e
+b
+2src/main/java/ui/PluginToolWindowContentPanel.java,a\3\a3f3b9a02f482c398c78d32aba084ea19eff7da9
+Q
+!src/main/java/actions/ZoomIn.java,3\c\3c3ed2d1c7e2423e6b798da928b504059a4f364a
+R
+"src/main/java/actions/ZoomOut.java,a\6\a6b5e2f77f62e6984a79434953cadbb89015f54d
+R
+"src/main/java/graphing/UMLMap.java,a\8\a8cd9e6fb0470295d2a0a3c0474dbf05d6179ac6
+W
+'src/main/java/graphing/PathBuilder.java,7\3\737052bce70741544fe05c9b72e0d78367ab51ea
+S
+#src/main/java/graphing/BoxData.java,9\2\92a6b74ed13dc3d45cebd6ead5cc4bb1fefb941c
+U
+%src/main/java/ui/UMLDiagramPanel.java,6\8\68c86ad3a9218348cdbca6573b63217166b84745
+d
+4src/main/java/actions/RemoveConnectionlessBoxes.java,d\9\d971c2a4c8caaab411d8188543ff2b594f01668d
+O
+src/main/java/graphing/Box.java,8\d\8ddfe8b692d345b6502bdf5537f1ed9ab9ab9511
+Q
+!src/main/java/graphing/Field.java,4\9\49890a4351bbb937f474deac5ed7f519e2899f87
+Z
+*src/main/java/actions/GenerateDiagram.java,3\2\32c2e207f4b3c87dea83cc389e85b6c9220ac573
