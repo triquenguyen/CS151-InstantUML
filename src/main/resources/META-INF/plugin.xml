@@ -1,0 +1,64 @@
+<idea-plugin>
+    <id>org.example.InstantUML</id>
+    <name>InstantUML</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow id="InstantUML"
+                    anchor="right"
+                    factoryClass="ui.PluginToolWindowFactory">
+        </toolWindow>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="generateDiagram"
+                class="actions.GenerateDiagram"
+                icon="AllIcons.General.Add"
+                text="Add Diagram">
+        </action>
+
+        <action id="removeConnectionlessBoxes"
+                class="actions.RemoveConnectionlessBoxes"
+                text="Remove Non-Connected Boxes">
+        </action>
+        <action id="zoomIn"
+                class="actions.ZoomIn"
+                icon="AllIcons.General.ZoomIn"
+                text="Zoom-In">
+        </action>
+        <action id="zoomOut"
+                class="actions.ZoomOut"
+                icon="AllIcons.General.ZoomOut"
+                text="Zoom-Out">
+        </action>
+
+
+        <group id="UI.Toolbar" >
+            <reference ref="generateDiagram"></reference>
+            <separator></separator>
+            <reference ref="zoomIn"/>
+            <reference ref="zoomOut"/>
+            <separator></separator>
+
+    </group>
+        <group id="UI.OperationMenu" text="Operations" popup="true">
+            <add-to-group group-id="UI.Toolbar" anchor="after" relative-to-action="generateDiagram"/>
+            <reference ref="removeConnectionlessBoxes"/>
+        </group>
+        <group id="UI.File" text="File" popup="true" icon="AllIcons.Ide.ConfigFile">
+            <add-to-group group-id="UI.Toolbar" anchor="after" relative-to-action="UI.Toolbar"/>
+        </group>
+
+    </actions>
+</idea-plugin>
