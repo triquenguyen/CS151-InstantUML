@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.impl.ActionMenu;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
+import org.apache.tools.ant.Project;
 
 import java.util.LinkedList;
 
