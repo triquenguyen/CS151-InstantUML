@@ -4,6 +4,7 @@ import graphing.enums.AccessModifier;
 import graphing.enums.BoxType;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,12 +13,14 @@ import java.util.List;
  */
 public class Box {
 
+   private String name;
    private BoxType boxType;
    private boolean isAbstract;
    private List<Field> fields;
    private List<Method> methods;
-   private ArrayList<Box> adjList; // outGoing
+   private ArrayList<Node> adjList; // outGoing
    private int inDegree;
+   private LinkedList<String> potentialConnections;
 
    /**
     * Default constructor for Box
@@ -25,8 +28,10 @@ public class Box {
    public Box() {
       this.boxType = null;
       this.isAbstract = false;
-      this.fields = null;
-      this.methods = null;
+      this.fields = new ArrayList<>();
+      this.methods = new ArrayList<>();
+      adjList = new ArrayList<>();
+      potentialConnections = new LinkedList<>();
    }
 
    /**
@@ -119,5 +124,43 @@ public class Box {
     */
    public void addMethod(Method method) {
       methods.add(method);
+   }
+
+   void addPotentialConnection(String className) {
+      potentialConnections.add(className);
+   }
+
+   LinkedList<String> getPotentialConnections() {
+      return potentialConnections;
+   }
+
+   void addConnection(Box box, Connector connection) {
+      adjList.add(new Node(box, connection));
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   /**
+    * Stores the connections to other Boxes in the graph
+    */
+   private class Node {
+
+      private Box box;
+      private Connector connector;
+
+      /**
+       * @param box        A box already existing in the map
+       * @param connector  The connection that the from node has to the to node
+       */
+      public Node(Box box, Connector connector) {
+         this.box = box;
+         this.connector = connector;
+      }
    }
 }
