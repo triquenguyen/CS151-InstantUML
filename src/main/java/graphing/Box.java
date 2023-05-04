@@ -3,6 +3,7 @@ package graphing;
 import graphing.enums.AccessModifier;
 import graphing.enums.BoxType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,8 @@ public class Box {
    private boolean isAbstract;
    private List<Field> fields;
    private List<Method> methods;
+   private ArrayList<Box> adjList; // outGoing
+   private int inDegree;
 
    /**
     * Default constructor for Box

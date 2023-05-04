@@ -25,18 +25,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CyclicBarrier;
 
+/**
+ * makes the UML diagram
+ */
 public class GenerateDiagram extends AnAction {
 
    @Override
    public void actionPerformed(@NotNull AnActionEvent e) {
-
-      loadProjectFiles(e.getProject());
-
-      Messages.showInfoMessage("", "Info");
-   }
-
-   private void loadProjectFiles(Project p) {
-
 
    }
 

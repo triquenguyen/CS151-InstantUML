@@ -17,7 +17,6 @@ public class PluginToolWindowFactory implements ToolWindowFactory {
 
    private ToolWindow pluginToolWindow;
    private PluginToolWindowContentPanel panel;
-   private static LinkedList<UMLDiagramPanel> diagramPanels;
 
    @Override
    public void createToolWindowContent(@NotNull Project project,
@@ -29,4 +28,5 @@ public class PluginToolWindowFactory implements ToolWindowFactory {
       toolWindow.getContentManager().addContent(content);
 
    }
+
 }
