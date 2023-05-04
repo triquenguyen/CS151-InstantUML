@@ -15,7 +15,7 @@
 
 | Members | Project Contribution |
 | ------- | --------------------- |
-| Reece Kim | |
+| Reece Kim | | Worked on the structure of the project.  Maintained the gradle.build file.  Maintained the plugin.xml file.  Coded everything except the part the build the displayed graph in DiagramPanel.java |
 | Trique Nguyen | Researched and experimented  on GraphViz API <br> Implement GraphViz to generate the diagram <br> Display the diagram on the plugin user interface |
 | Brian Pham |  | 
 
