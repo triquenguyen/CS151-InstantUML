@@ -1,5 +1,7 @@
 package ui;
 
+import com.intellij.ide.plugins.cl.PluginClassLoader;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.Messages;
 import graphing.Box;
 import graphing.Field;
@@ -11,8 +13,8 @@ import graphing.Box.Edge;
 import guru.nidi.graphviz.attribute.*;
 import guru.nidi.graphviz.engine.*;
 import guru.nidi.graphviz.model.*;
-import static guru.nidi.graphviz.attribute.Records.*;
-import static guru.nidi.graphviz.model.Compass.*;
+import org.slf4j.impl.StaticLoggerBinder;
+
 import static guru.nidi.graphviz.model.Factory.*;
 import static guru.nidi.graphviz.attribute.Records.*;
 import static guru.nidi.graphviz.model.Compass.*;
@@ -28,13 +30,16 @@ import java.util.Set;
 
 public class UMLDiagramPanel extends JPanel {
 
-   public MutableGraph g = mutGraph("example").setDirected(false);
-   public Graph graph = graph("Diagram").directed();
-   public Set<Node> graphNodeSet = new HashSet<>();
+   private MutableGraph g;
+   private Graph graph;
+   private Set<Node> graphNodeSet;
    private UMLMap map;
 
    public UMLDiagramPanel(UMLMap map) {
       this.map = map;
+      g = mutGraph("example").setDirected(false);
+      graph = graph("Diagram").directed();
+      graphNodeSet = new HashSet<>();
 
       for (Map.Entry<String, Box> entry : map.getEntrySet()) {
          Box fileClass = entry.getValue();
@@ -52,16 +57,11 @@ public class UMLDiagramPanel extends JPanel {
       }
 
       try {
-         Graphviz.fromGraph(graph).width(720).render(Format.PNG).toFile(new File("diagrams/diagram.png"));
+         Graphviz.fromGraph(graph).width(720).render(Format.PNG)
+                 .toFile(new File("diagrams/diagram.png"));
       } catch (IOException e) {
          Messages.showInfoMessage(e.getMessage(), "Error");
       }
-
-      /*
-      * I will call this method from UMLMap.
-      * Put code to generate the diagram and add the UML diagram here.  Last
-      * line should call PluginToolWindowContentPanel.addDiagramPanel(this);
-      * */
 
       PluginToolWindowContentPanel.addDiagramPanel(this);
    }
@@ -83,8 +83,8 @@ public class UMLDiagramPanel extends JPanel {
          methods.append(method.toString());
       }
 
-      return node(className).with(Shape.BOX, Records.of(turn(rec(className), rec(attributes + "\n" + methods))));
-
+      return node(className).with(Shape.BOX, Records.of(turn(rec(className),
+              rec(attributes + "\n" + methods))));
    }
 
    public Node findNode(Box fileClass) {

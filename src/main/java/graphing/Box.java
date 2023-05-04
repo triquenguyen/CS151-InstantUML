@@ -1,5 +1,6 @@
 package graphing;
 
+import graphing.enums.AccessModifier;
 import graphing.enums.BoxType;
 
 import java.util.ArrayList;

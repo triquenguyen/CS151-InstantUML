@@ -1,8 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="Psi-Api">
     <output-path>$PROJECT_DIR$/out/artifacts/Psi_Api</output-path>
-    <root id="root">
-      <element id="library" level="project" name="github.adedayo.intellij.sdk.java.psi.api" />
-    </root>
+    <root id="root" />
   </artifact>
 </component>

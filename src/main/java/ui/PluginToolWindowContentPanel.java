@@ -1,9 +1,18 @@
 package ui;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.components.JBTabbedPane;
+import com.intellij.ui.content.Content;
+import com.intellij.ui.content.ContentFactory;
+import com.intellij.ui.tabs.TabInfo;
+import org.apache.tools.ant.Project;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +28,8 @@ public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
    private final ActionManager actionManager;
    private final ActionToolbar actionToolbar;
    private static ArrayList<UMLDiagramPanel> diagramPanels = new ArrayList<>();
+   private static JBTabbedPane tabs = new JBTabbedPane();
+
 
    public PluginToolWindowContentPanel() {
       super(true, true);
@@ -32,16 +43,18 @@ public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
               true);
       setToolbar(actionToolbar.getComponent()); // Adds toolbar to panel
 
-      JScrollPane pane = new JScrollPane();
-      ImageIcon imageIcon = new ImageIcon("diagrams/diagram.png");
-      JLabel label = new JLabel(imageIcon);
-
-      pane.add(label);
-      setContent(pane);
+      setContent(tabs);
+      setVisible(true);
    }
 
    public static void addDiagramPanel(UMLDiagramPanel diagramPanel) {
       diagramPanels.add(diagramPanel);
+      JPanel newTab = new JPanel();
+      newTab.add(new JLabel(new ImageIcon("diagrams/diagram.png")));
+      newTab.setVisible(true);
+      TabInfo info = new TabInfo(newTab).setText("tab");
+      info.canBeDraggedOut();
+      tabs.addTab("tab", newTab);
    }
 
 }

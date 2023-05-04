@@ -29,20 +29,15 @@ public class UMLMap {
    public UMLMap(PsiJavaFileImpl[] classes) {
       map = new HashMap<>();
       populateMap(classes);
+      new UMLDiagramPanel(this);
    }
 
    /**
     * Populates UMLMap with data from the file.
     */
-   public void populateMap(PsiJavaFileImpl[] classes) {
-
-      // Add boxes to diagram
-      addBoxes(classes);
-
-      // Add other Connectors
-      addConnections();
-
-      new UMLDiagramPanel(this);
+   private void populateMap(PsiJavaFileImpl[] classes) {
+      addBoxes(classes); // Add boxes to diagram
+      addConnections();  // Add other Connectors
    }
 
    private void addConnections() {
