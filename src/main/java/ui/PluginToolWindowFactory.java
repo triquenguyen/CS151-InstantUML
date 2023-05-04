@@ -7,13 +7,17 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.LinkedList;
+
 /**
- * Referenced from: https://github.com/alessandro-caldonazzi/UMLGenerator/blob/master/src/com/jakutenshi/projects/umlplugin/ui/UMLPluginToolWindowFactory.java
+ * The main class that deals with the panel and tool window of the plugin.
+ * Can be considered to be the control
  */
 public class PluginToolWindowFactory implements ToolWindowFactory {
 
    private ToolWindow pluginToolWindow;
    private PluginToolWindowContentPanel panel;
+   private static LinkedList<UMLDiagramPanel> diagramPanels;
 
    @Override
    public void createToolWindowContent(@NotNull Project project,
