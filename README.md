@@ -24,15 +24,15 @@
 <br>
 
 ## Survey on previous works and their problems/issues
-- IntelliJ Ultimate [1]:
+- [IntelliJ Ultimate](https://www.jetbrains.com/idea/business/) [1]:
   - Comes with the paid version of IntelliJ for $16.90 per month
   - Smarter and interactive, you click on a package and it generates the diagram
   - Able to edit contents within the diagram
-- UML Generator (Existing IntelliJ plugin) [2]:
+- [UML Generator](https://plugins.jetbrains.com/plugin/15124-uml-generator) (Existing IntelliJ plugin) [2]:
   - Can’t edit the contents within the boxes, can only delete the boxes
   - If there are enough boxes, then the connectors overlap with the boxes
   - Creates associations with DataTypes from the default Java library, which are not needed
-- Magic UML [3]:
+- [Magic UML](https://github.com/xukmin/magicuml) [3]:
   - A GitHub project from 7 years ago
   - Does not have a GUI
   - Seems to have to input each .java file individually in order to use it
@@ -76,3 +76,11 @@
 - Allow editing of diagram generation layout when choosing package
 - Selection of code to be used in diagram(s) (getters, setters, etc.)
 - Let the user add constraints to the diagram.
+
+<br>
+
+## Solutions
+
+<br>
+
+## Running the Program
