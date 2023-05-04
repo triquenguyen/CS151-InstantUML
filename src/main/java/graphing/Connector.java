@@ -15,12 +15,6 @@ public class Connector {
    private Modality to;
 
    /**
-    * Default constructor for the Connector.
-    */
-   public Connector() {
-   }
-
-   /**
     * @param type    The ConnectorType of the Connector.
     */
    public Connector(ConnectorType type) {

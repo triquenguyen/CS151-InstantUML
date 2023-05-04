@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9799fc32-e300-4959-b21c-03d618f5f192" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/49890a4351bbb937f474deac5ed7f519e2899f87" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/actions/GenerateDiagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/actions/GenerateDiagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Connector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/UMLMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/UMLMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/PluginToolWindowContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/PluginToolWindowContentPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/PluginToolWindowFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/PluginToolWindowFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/ProjectFileChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/ProjectFileChooser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UMLDiagramPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UMLDiagramPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,13 +72,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS151_HW5" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\reece\IdeaProjects\CS151-InstantUML\untracked" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.CS151-InstantUML [runIde]">
+    <configuration name="CS151-InstantUML [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="CS151-InstantUML [runIde]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -106,11 +126,13 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.CS151-InstantUML [runIde]" />
+        <item itemvalue="Gradle.CS151-InstantUML [dependencies]" />
       </list>
     </recent_temporary>
   </component>
@@ -140,21 +162,22 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/ProjectFileChooser.java</url>
-          <line>172</line>
-          <properties class="ui.ProjectFileChooser" method="doOKAction">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="37" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/graphing/UMLMap.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="graphing.Box$Node" memberName="box" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="GradleRunConfiguration">
         <watch expression="((VirtualDirectoryImpl)((it.unimi.dsi.fastutil.objects.ObjectOpenHashSet)vFiles).toArray()[0]).myData" custom="it.unimi.dsi.fastutil.objects.ObjectOpenHashSet,com.intellij.openapi.vfs.newvfs.impl.VirtualDirectoryImpl" />

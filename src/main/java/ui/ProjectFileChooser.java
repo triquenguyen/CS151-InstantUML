@@ -79,7 +79,7 @@ public class ProjectFileChooser extends DialogWrapper {
 
             if (value instanceof ClassNode) {
                getTextRenderer().setIcon(PlatformIcons.CLASS_ICON);
-               getTextRenderer().append(value.toString());
+               getTextRenderer().append(((ClassNode) value).name);
             }
             else if (node.getParent() == root) {
                getTextRenderer().setIcon(PlatformIcons.PACKAGE_ICON);
@@ -172,14 +172,10 @@ public class ProjectFileChooser extends DialogWrapper {
    @Override
    protected void doOKAction() {
       // Get ClassNodes
-      ClassNode[] nodes = tree.getSelectedNodes(ClassNode.class,
-              ClassNode.class::isInstance);
-
-      // Get classes from nodes
-      PsiJavaFileImpl[] classes = new PsiJavaFileImpl[nodes.length];
-      for (int i = 0; i < nodes.length; i++)
-         classes[i] = nodes[i].classFile;
+      PsiJavaFileImpl[] classes = tree.getCheckedNodes(PsiJavaFileImpl.class,
+              null);
       new UMLMap(classes); // Send the classes to a UMl Map
+      close(OK_EXIT_CODE);
    }
 
    /**
@@ -188,10 +184,11 @@ public class ProjectFileChooser extends DialogWrapper {
    private class ClassNode extends CheckedTreeNode {
 
       private PsiJavaFileImpl classFile;
+      private String name;
 
       private ClassNode(String name, PsiJavaFileImpl classFile) {
-         super(name);
-         this.classFile = classFile;
+         super(classFile);
+         this.name = name;
       }
    }
 }
