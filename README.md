@@ -15,9 +15,9 @@
 
 | Members | Project Contribution |
 | ------- | --------------------- |
-| Reece Kim | | Worked on the structure of the project.  Maintained the gradle.build file.  Maintained the plugin.xml file.  Coded everything except the part the build the displayed graph in DiagramPanel.java |
+| Reece Kim | Worked on the structure of the project. <br> Maintained the gradle.build file. <br> Maintained the plugin.xml file. <br> Coded everything except the part the build the displayed graph in DiagramPanel.java |
 | Trique Nguyen | Researched and experimented  on GraphViz API <br> Implement GraphViz to generate the diagram <br> Display the diagram on the plugin user interface |
-| Brian Pham |  | 
+| Brian Pham | Overlooked code <br> Stylized/Check report <br> Updated Diagram(s) | 
 
 ## Survey on previous works and their problems/issues
 - [IntelliJ Ultimate](https://www.jetbrains.com/idea/business/) [1]:
