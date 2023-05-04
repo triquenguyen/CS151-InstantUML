@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="github.adedayo.intellij.sdk.java.psi.api" type="repository">
+    <properties maven-id="com.github.adedayo.intellij.sdk:java-psi-api:142.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/adedayo/intellij/sdk/java-psi-api/142.1/java-psi-api-142.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/adedayo/intellij/sdk/java-psi-api/142.1/java-psi-api-142.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+    <excluded>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/adedayo/intellij/sdk/java-psi-api/142.1/java-psi-api-142.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/adedayo/intellij/sdk/java-psi-api/142.1/java-psi-api-142.1-javadoc.jar!/" />
+    </excluded>
+  </library>
+</component>

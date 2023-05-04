@@ -11,6 +11,7 @@
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -24,6 +25,12 @@
         <!-- Add your actions here -->
         <action id="generateDiagram"
                 class="actions.GenerateDiagram"
+                icon="AllIcons.General.Add"
+                text="Add Diagram">
+        </action>
+
+        <action id="chooseFiles"
+                class="actions.ChooseFiles"
                 icon="AllIcons.General.Add"
                 text="Add Diagram">
         </action>
@@ -45,7 +52,7 @@
 
 
         <group id="UI.Toolbar" >
-            <reference ref="generateDiagram"></reference>
+            <reference ref="chooseFiles"></reference>
             <separator></separator>
             <reference ref="zoomIn"/>
             <reference ref="zoomOut"/>
@@ -53,7 +60,7 @@
 
     </group>
         <group id="UI.OperationMenu" text="Operations" popup="true">
-            <add-to-group group-id="UI.Toolbar" anchor="after" relative-to-action="generateDiagram"/>
+            <add-to-group group-id="UI.Toolbar" anchor="after" relative-to-action="chooseFiles"/>
             <reference ref="removeConnectionlessBoxes"/>
         </group>
         <group id="UI.File" text="File" popup="true" icon="AllIcons.Ide.ConfigFile">
