@@ -23,11 +23,7 @@
 
 <br>
 
-## Problems and Issues
-
-<br>
-
-## Survey on previous works
+## Survey on previous works and their problems/issues
 - IntelliJ Ultimate [1]:
   - Comes with the paid version of IntelliJ for $16.90 per month
   - Smarter and interactive, you click on a package and it generates the diagram
