@@ -115,7 +115,7 @@ public class Test {
    public boolean changeHourlyRate(String firstName, String lastName,
                                    double hourlyRate) {
 
-      // Find the first developer with the same first and last name
+/*      // Find the first developer with the same first and last name
       for (Developer d : developers) {
          if (d.getFirstName().equals(firstName) &&
                  d.getLastName().equals(lastName) && d instanceof Intern dev) {
@@ -124,7 +124,7 @@ public class Test {
             dev.setHourlyRate(hourlyRate);
             return true;
          }
-      }
+      }*/
       return false;
    }
 
@@ -132,7 +132,7 @@ public class Test {
                               Level level) {
 
       // Find the first developer with the same first and last name
-      for (Developer d : developers) {
+/*      for (Developer d : developers) {
          if (d.getFirstName().equals(firstName) &&
                  d.getLastName().equals(lastName) && d instanceof SDE dev) {
 
@@ -140,7 +140,7 @@ public class Test {
             dev.setLevel(level);
             return true;
          }
-      }
+      }*/
       return false;
    }
 

@@ -26,6 +26,7 @@ public class PluginToolWindowFactory implements ToolWindowFactory {
       ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
       Content content = contentFactory.createContent(panel, "", true);
       toolWindow.getContentManager().addContent(content);
+
    }
 
 }
