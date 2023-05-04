@@ -96,4 +96,9 @@
 
 <br>
 
-## Running the Program
+## Instructions for running
+
+<br>
+
+## Snapshots
+
