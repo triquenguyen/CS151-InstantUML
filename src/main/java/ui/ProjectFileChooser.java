@@ -11,12 +11,16 @@ import com.intellij.ui.CheckboxTree;
 import com.intellij.ui.CheckedTreeNode;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.TreeSpeedSearch;
+import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.PlatformIcons;
 import com.intellij.util.ui.JBUI;
+import graphing.UMLMap;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultTreeSelectionModel;
 import java.awt.*;
 import java.util.HashMap;
 
@@ -87,6 +91,8 @@ public class ProjectFileChooser extends DialogWrapper {
             }
          }}, root);
       tree.setRootVisible(true);
+      // tree.setModel(new DefaultTreeModel(root));
+
       LoadProjectFiles();
 
       // Put tree into a scroll pane and add to main JPanel
@@ -157,19 +163,24 @@ public class ProjectFileChooser extends DialogWrapper {
       CheckedTreeNode packageNode = new CheckedTreeNode(name);
       root.add(packageNode);
       packages.put(name, packageNode);
-      this.getOKAction();
       return packageNode;
    }
-
 
    /**
     * Sends the PsiJava files to a UMLMap
     */
    @Override
    protected void doOKAction() {
-      // tree.getSelectedNodes(ClassNode.class, );
-   }
+      // Get ClassNodes
+      ClassNode[] nodes = tree.getSelectedNodes(ClassNode.class,
+              ClassNode.class::isInstance);
 
+      // Get classes from nodes
+      PsiJavaFileImpl[] classes = new PsiJavaFileImpl[nodes.length];
+      for (int i = 0; i < nodes.length; i++)
+         classes[i] = nodes[i].classFile;
+      new UMLMap(classes); // Send the classes to a UMl Map
+   }
 
    /**
     * Holds a CheckedTree node that hold a PsiClass data

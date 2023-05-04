@@ -1,4 +1,7 @@
 package graphing;
+import com.intellij.psi.impl.source.PsiJavaFileImpl;
+import ui.UMLDiagramPanel;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -16,67 +19,21 @@ import java.lang.reflect.*;
  */
 public class UMLMap {
 
-   private HashMap<Box, ArrayList<Node>> map; // Outgoing map.
-   private File classesFile;
+   private HashMap<Box, ArrayList<Node>> map; // Outgoing map
 
-   /**
-    * default constructor for UMLMap
-    */
-   public UMLMap() {
-      map = new HashMap<>();
-      classesFile = null;
-   }
 
-   /**
-    * @param classesFile    The File that contains
-    */
-   public UMLMap(File classesFile) {
+   public UMLMap(PsiJavaFileImpl[] classes) {
       map = new HashMap<>();
-      this.classesFile = classesFile;
    }
 
    /**
     * Populates UMLMap with data from the file.
     */
-   public void populateMap() {
-
-      // Initialize Process builder for javap -p commands
-      ProcessBuilder builder = new ProcessBuilder();
-
-      // array of .class files in the out folder
-      File[] files = classesFile.listFiles();
-      builder.directory(classesFile);
-
-      for (File file : files) {
-
-         // TODO add an if condition that continues if class isn't one of the
-         // TODO ones selected by user.
-
-         // Commands to get the method and variable signatures
-         builder.command("cmd.exe", "/c", "javap -p " + file.getName());
-
-         // Start and run the process for each .class file
-         Process p = null;
-         try {
-            p = builder.start(); // Convert to builder into a process
-         }
-         catch (IOException ioException) {
-            ioException.getStackTrace();
-         }
-
-         // Set up Buffered reader to read class, field, and method signatures
-         BufferedReader reader =
-                 new BufferedReader(new InputStreamReader(p.getInputStream()));
-         Box box = populateBox(reader); // Populate a box
+   public void populateMap(PsiJavaFileImpl[] classes) {
 
 
-      }
 
-      /*
-      TODO After the Map has been population add the Association connections
-      by looking at the Field in the Box's Map.
-       */
-
+      new UMLDiagramPanel(this);
    }
 
    /**
@@ -88,18 +45,7 @@ public class UMLMap {
     */
    private Box populateBox(BufferedReader reader) {
 
-      String line = "";
-      String[] s;
 
-      // TODO Read the second line to determine the BoxType
-
-      // Collect the Field and Method data to put in the map
-      while (line != null) {
-
-         // TODO read the
-
-
-      }
       return null;
    }
 
@@ -122,20 +68,6 @@ public class UMLMap {
     */
    private void addConnection(Box from, Connector connection, Box to) {
       map.get(from).add(new Node(to, connection));
-   }
-
-   /**
-    * @return  The path to the files which the data are collected from.
-    */
-   public File getFile() {
-      return classesFile;
-   }
-
-   /**
-    * @param classesFile  File path which data can be collected from
-    */
-   public void setFile(File classesFile) {
-      this.classesFile = classesFile;
    }
 
    /**
