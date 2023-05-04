@@ -4,7 +4,7 @@
 | ------- | --------------------- |
 | Reece Kim | Came up with problem statements and provided solutions<br>Researched and analyzed the pros and cons of existing products on the market<br> Designed the overall functionalities of the project <br> Designed Class and Use Case Diagram|
 | Trique Nguyen | Researched on developing a plugin for IntelliJ IDEA <br> Designed the plan and approach for the team to follow on <br> Came up with the initial tools used for the project <br> Designed the Sequence Diagram |
-| Brian Pham | Designed the State Diagram| 
+| Brian Pham | Designed the State Diagram <br> Stylized proposal report | 
 <br>
 
 | Members | Presentation Contribution |
@@ -36,6 +36,10 @@
   - A GitHub project from 7 years ago
   - Does not have a GUI
   - Seems to have to input each .java file individually in order to use it
+
+<br>
+
+## Solutions
 
 <br>
 
@@ -85,10 +89,6 @@
 - Allow editing of diagram generation layout when choosing package
 - Selection of code to be used in diagram(s) (getters, setters, etc.)
 - Let the user add constraints to the diagram.
-
-<br>
-
-## Solutions
 
 <br>
 
