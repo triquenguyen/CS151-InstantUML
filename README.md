@@ -1,4 +1,4 @@
-# Project: InstantUML - Generate your project UML in a blink
+# Project: InstantUML - Instantly generate your project UML
 ## Team 10 - Reece Kim, Trique Nguyen, Brian Pham
 | Members | Proposal Contribution |
 | ------- | --------------------- |
