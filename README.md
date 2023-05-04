@@ -96,7 +96,7 @@
 
 <br>
 
-## Instructions for running
+## Instructions
 
 <br>
 
