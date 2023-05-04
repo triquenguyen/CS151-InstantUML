@@ -1,6 +1,5 @@
 package graphing;
 
-import graphing.enums.AccessModifier;
 import graphing.enums.BoxType;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Box {
    private boolean isAbstract;
    private List<Field> fields;
    private List<Method> methods;
-   private ArrayList<Node> adjList; // outGoing
+   private ArrayList<Edge> adjList; // outGoing
    private int inDegree;
    private LinkedList<String> potentialConnections;
 
@@ -135,7 +134,7 @@ public class Box {
    }
 
    void addConnection(Box box, Connector connection) {
-      adjList.add(new Node(box, connection));
+      adjList.add(new Edge(box, connection));
    }
 
    public String getName() {
@@ -146,10 +145,14 @@ public class Box {
       this.name = name;
    }
 
+   public ArrayList<Edge> getAdjList() {
+      return adjList;
+   }
+
    /**
     * Stores the connections to other Boxes in the graph
     */
-   private class Node {
+   public class Edge {
 
       private Box box;
       private Connector connector;
@@ -158,8 +161,24 @@ public class Box {
        * @param box        A box already existing in the map
        * @param connector  The connection that the from node has to the to node
        */
-      public Node(Box box, Connector connector) {
+      public Edge(Box box, Connector connector) {
          this.box = box;
+         this.connector = connector;
+      }
+
+      public Box getBox() {
+         return box;
+      }
+
+      public void setBox(Box box) {
+         this.box = box;
+      }
+
+      public Connector getConnector() {
+         return connector;
+      }
+
+      public void setConnector(Connector connector) {
          this.connector = connector;
       }
    }

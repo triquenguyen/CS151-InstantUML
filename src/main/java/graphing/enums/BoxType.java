@@ -5,7 +5,7 @@ package graphing.enums;
  */
 public enum BoxType {
 
-   CLASS(""), INTERFACE("<<Interface>>"), ENUMERATION("<<Enumeration>>");
+   CLASS(""), INTERFACE("<<Interface>>"), ENUMERATION("<<Enumeration>>"), ABSTRACT_CLASS("<<Abstract>>");
 
    private String string;
 
