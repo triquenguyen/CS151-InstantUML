@@ -162,9 +162,12 @@ public class ProjectFileChooser extends DialogWrapper {
    }
 
 
+   /**
+    * Sends the PsiJava files to a UMLMap
+    */
    @Override
    protected void doOKAction() {
-      Messages.showInfoMessage("Message", "Message");
+      // tree.getSelectedNodes(ClassNode.class, );
    }
 
 
