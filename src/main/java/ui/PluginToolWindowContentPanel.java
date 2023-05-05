@@ -8,6 +8,7 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTabbedPane;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
@@ -49,12 +50,9 @@ public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
 
    public static void addDiagramPanel(UMLDiagramPanel diagramPanel) {
       diagramPanels.add(diagramPanel);
-      JPanel newTab = new JPanel();
-      newTab.add(new JLabel(new ImageIcon("diagrams/diagram.png")));
-      newTab.setVisible(true);
-      TabInfo info = new TabInfo(newTab).setText("tab");
-      info.canBeDraggedOut();
-      tabs.addTab("tab", newTab);
+      JScrollPane scrollPane = new JScrollPane(
+              new JLabel(new ImageIcon("diagrams/diagram.png")));
+      tabs.addTab("tab", scrollPane);
    }
 
 }

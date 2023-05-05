@@ -17,7 +17,7 @@ public class Field extends BoxData {
     */
    @Override
    public String toString() {
-      return String.format("%s %s: %s", getAccessModifier().toString(),
+      return String.format("%s %s:%s", getAccessModifier().toString(),
               getName(), getDataType());
    }
 
