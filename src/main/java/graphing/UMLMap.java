@@ -48,15 +48,21 @@ public class UMLMap {
 
          // Add generalization
          for (String className : current.getPotentialConnections())
-            if (map.containsKey(className))
-               current.addConnection(map.get(className),
+            if (map.containsKey(className)) {
+               Box toBox = map.get(className);
+               toBox.incrementInDegree();
+               current.addConnection(toBox,
                        new Connector(ConnectorType.GENERALIZATION));
+            }
 
          // Add association
          for (Field field : current.getFields())
-            if (map.containsKey(field.getDataType()))
-               current.addConnection(map.get(field.getDataType()),
+            if (map.containsKey(field.getDataType())) {
+               Box toBox = map.get(field.getDataType());
+               toBox.incrementInDegree();
+               current.addConnection(toBox,
                        new Connector(ConnectorType.ASSOCIATION));
+            }
 
       }
    }
@@ -133,6 +139,8 @@ public class UMLMap {
          box.setBoxType(BoxType.INTERFACE);
       else if (clazz.isEnum())
          box.setBoxType(BoxType.ENUMERATION);
+      else if (clazz.hasModifierProperty("abstract"))
+         box.setBoxType(BoxType.ABSTRACT);
       else
          box.setBoxType(BoxType.CLASS);
    }

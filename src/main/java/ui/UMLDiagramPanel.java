@@ -42,8 +42,8 @@ public class UMLDiagramPanel extends JPanel {
 
    public UMLDiagramPanel(UMLMap map) {
       this.map = map;
-      mutableGraph = mutGraph("diagram").setDirected(false).graphAttrs().add(Rank.dir(Rank.RankDir.TOP_TO_BOTTOM));
-
+      mutableGraph = mutGraph("diagram").setDirected(false)
+              .graphAttrs().add(Rank.dir(Rank.RankDir.TOP_TO_BOTTOM));
       linkList = new ArrayList<>();
       graphNodeSet = new HashSet<>();
 
@@ -76,10 +76,6 @@ public class UMLDiagramPanel extends JPanel {
 
    public MutableNode createNode(Box fileClass) {
       // Initiate CLass Name
-      if (fileClass.isAbstract()) {
-         String className = "<<Abstract>>" + "\n" + fileClass.getName();
-      }
-
       String className = fileClass.getBoxType() + "\n" + fileClass.getName();
 
       // Handle attributes
@@ -97,7 +93,9 @@ public class UMLDiagramPanel extends JPanel {
          methods.append(dummy);
       }
 
-      return mutNode(className).add(Font.size(24), Shape.BOX, Records.of(turn(rec(className), rec(attributes + "\n" + methods))));
+      return mutNode(className).add(Font.size(24), Shape.BOX,
+              Records.of(turn(rec(className), rec(attributes +
+                      "\n" + methods))));
    }
 
    public MutableNode findNode(Box fileClass) {
