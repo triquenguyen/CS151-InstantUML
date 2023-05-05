@@ -80,22 +80,17 @@ public class UMLDiagramPanel extends JPanel {
 
       // Handle attributes
       StringBuilder attributes = new StringBuilder();
-
-      for (Field attr : fileClass.getFields()) {
-         String dummy = attr.toString() + "\n";
-         attributes.append(dummy);
-      }
+      for (Field attr : fileClass.getFields())
+         attributes.append(String.format("%s%n", attr));
 
       // Handle Methods
       StringBuilder methods = new StringBuilder();
-      for (Method method : fileClass.getMethods()){
-         String dummy = method.toString() + "\n";
-         methods.append(dummy);
-      }
+      for (Method method : fileClass.getMethods())
+         methods.append(String.format("%s%n", method));
 
       return mutNode(className).add(Font.size(24), Shape.BOX,
-              Records.of(turn(rec(className), rec(attributes +
-                      "\n" + methods))));
+              Records.of(turn(rec(className), rec(attributes.toString())
+                      , rec(methods.toString()))));
    }
 
    public MutableNode findNode(Box fileClass) {
