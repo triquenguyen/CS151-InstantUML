@@ -50,8 +50,7 @@ public class PluginToolWindowContentPanel extends SimpleToolWindowPanel {
 
    public static void addDiagramPanel(UMLDiagramPanel diagramPanel) {
       diagramPanels.add(diagramPanel);
-      JScrollPane scrollPane = new JScrollPane(
-              new JLabel(new ImageIcon("diagrams/diagram.png")));
+      JScrollPane scrollPane = new JScrollPane(diagramPanel);
       tabs.addTab("tab", scrollPane);
    }
 

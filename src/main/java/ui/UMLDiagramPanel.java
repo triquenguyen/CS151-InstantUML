@@ -1,8 +1,5 @@
 package ui;
 
-import com.intellij.ide.plugins.cl.PluginClassLoader;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.ui.Messages;
 import graphing.Box;
 import graphing.Field;
 import graphing.Method;
@@ -13,17 +10,13 @@ import graphing.Box.Edge;
 import guru.nidi.graphviz.attribute.*;
 import guru.nidi.graphviz.engine.*;
 import guru.nidi.graphviz.model.*;
-import org.slf4j.impl.StaticLoggerBinder;
 
 import static guru.nidi.graphviz.model.Factory.*;
 import static guru.nidi.graphviz.attribute.Records.*;
-import static guru.nidi.graphviz.model.Compass.*;
-import guru.nidi.graphviz.model.Node;
 import guru.nidi.graphviz.model.MutableNode;
 
 
-import java.io.File;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
@@ -31,12 +24,9 @@ import java.util.Set;
 
 public class UMLDiagramPanel extends JPanel {
 
-//   private MutableGraph g;
-   private Graph graph;
-
    private MutableGraph mutableGraph;
    private Set<MutableNode> graphNodeSet;
-
+   private BufferedImage graphImage;
    private ArrayList<LinkSource> linkList;
    private UMLMap map;
 
@@ -64,12 +54,10 @@ public class UMLDiagramPanel extends JPanel {
          mutableGraph.add(graphNode);
       }
 
-      try {
-         Graphviz.fromGraph(mutableGraph).width(1080).render(Format.PNG)
-                 .toFile(new File("diagrams/diagram.png"));
-      } catch (IOException e) {
-         Messages.showInfoMessage(e.getMessage(), "Error");
-      }
+      // Set the graph image
+      graphImage = Graphviz.fromGraph(mutableGraph).width(1080)
+              .render(Format.PNG).toImage();
+      add(new JLabel(new ImageIcon(graphImage)));
 
       PluginToolWindowContentPanel.addDiagramPanel(this);
    }
@@ -85,8 +73,10 @@ public class UMLDiagramPanel extends JPanel {
 
       // Handle Methods
       StringBuilder methods = new StringBuilder();
-      for (Method method : fileClass.getMethods())
+      ArrayList<String> mList = new ArrayList<>();
+      for (Method method : fileClass.getMethods()) {
          methods.append(String.format("%s%n", method));
+      }
 
       return mutNode(className).add(Font.size(24), Shape.BOX,
               Records.of(turn(rec(className), rec(attributes.toString())
