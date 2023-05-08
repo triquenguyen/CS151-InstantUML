@@ -13,7 +13,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation('guru.nidi:graphviz-java:0.16.0') {
+    implementation('guru.nidi:graphviz-java:0.18.1') {
             exclude group: 'org.slf4j'
     }
 }

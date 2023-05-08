@@ -10,10 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.lang.reflect.*;
 
 /**
@@ -23,11 +20,11 @@ import java.lang.reflect.*;
  */
 public class UMLMap {
 
-   private HashMap<String, Box> map; // Outgoing map
+   private LinkedHashMap<String, Box> map; // Outgoing map
 
 
    public UMLMap(PsiJavaFileImpl[] classes) {
-      map = new HashMap<>();
+      map = new LinkedHashMap<>();
       populateMap(classes);
       new UMLDiagramPanel(this);
    }
@@ -56,13 +53,17 @@ public class UMLMap {
             }
 
          // Add association
-         for (Field field : current.getFields())
-            if (map.containsKey(field.getDataType())) {
-               Box toBox = map.get(field.getDataType());
+         String dataType = null;
+         for (Field field : current.getFields()) {
+            dataType = field.getDataType();
+            if (map.containsKey(dataType)
+                    && !dataType.equals(current.getName())) {
+               Box toBox = map.get(dataType);
                toBox.incrementInDegree();
                current.addConnection(toBox,
                        new Connector(ConnectorType.ASSOCIATION));
             }
+         }
 
       }
    }
