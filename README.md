@@ -72,13 +72,31 @@
 ## Operations
 - Choosing package(s) to use for diagram generation
 - Visualize/display relationships between classes
-- Allow editing of diagram generation layout when choosing package
-- Selection of code to be used in diagram(s) (getters, setters, etc.)
-- Let the user add constraints to the diagram.
+- Allow editing of diagram generation layout when choosing package*
+- Allow zooming in/out for image viewing*
+<br>
+*Operations that are not implemented or is work in progress.
 
 ## Solutions
+To deal with the problems that the previous works have, the plugin was built in consideration of the users' experience for convenience.
+- Making the user not have to go through complex instructions to generate a diagram
+- Easier instructions where user will be able to follow with very few problems along the way
 
 ## Instructions
+Assuming that the user has already downloaded/updated their [IntelliJ](https://www.jetbrains.com/idea/)
+
+### Setup
+- Download [Graphviz Package](https://graphviz.org/download/)
+- Download/Clone/Export this whole git into your IntelliJ and build the project
+- Ensure that project's Gradle settings are set to as is for the project
+- Disable any unneeded plugins through (Help -> Find Action -> Plugins)
+
+### Running Plugin
+- Simply run the plugin through Gradle (runIde)
+- This will display another IntelliJ window where a existing project should be opened
+- On the sidebar, there will be a tab, "InstantUML", where upon clicking will show several button operations with text to help identify what does what
+- Clicking "Generate Diagram" will prompt a display window of the project's package where you can choose which files are to be included in the diagram
+- After generating, the image will be displayed in that very same sidebar window underneath the button operations.
 
 ## Snapshots
 
