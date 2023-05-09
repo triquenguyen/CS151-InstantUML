@@ -36,10 +36,10 @@
 ## Diagrams
 | Diagram | Summary |
 | ------- | --------------------- |
-| [Class Diagram](./diagrams/Class%20Diagram.drawio.png) | Edit |
-| [State Diagram](./diagrams/State%20Diagram.png) | Edit |
-| [Use Case Diagram](./diagrams/Use_Case_Diagram.drawio.png) | Edit | 
-| [Sequence Diagram](./diagrams/SequenceDiagram.drawio.png)| Edit |
+| [Class Diagram](./diagrams/Class%20Diagram.drawio.png) | The class diagram for the relationships within the project. |
+| [State Diagram](./diagrams/State%20Diagram.png) | The state diagram for the process of the plugin when the user interacts with. |
+| [Use Case Diagram](./diagrams/Use_Case_Diagram.drawio.png) | The use case diagram for how the user interacts with the plugin. | 
+| [Sequence Diagram](./diagrams/SequenceDiagram.drawio.png)| The sequence diagram for how the objects/processes interact with each other in the plugin. |
 <!-- Use if need images
 
 [Class Diagram](./diagrams/Class%20Diagram.drawio.png)
@@ -99,4 +99,8 @@ Assuming that the user has already downloaded/updated their [IntelliJ](https://w
 - After generating, the image will be displayed in that very same sidebar window underneath the button operations.
 
 ## Snapshots
-Demonstration of the plugin:
+### Location of InstantUML Sidebar
+![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/30f1b8fc-09d6-4164-ad14-7816dd8553b4)
+### Preview generation of example package found in test folder
+![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/35dadbbd-6c9e-49a0-bf3b-263c9a1dc59b)
+
