@@ -42,10 +42,14 @@ public class Connector {
       return to;
    }
 
+   public String getConnectorStyle() {
+      return type.getStyle();
+   }
+
    /**
     * Sets the modality of the box that it leads to.
     */
-   public void setTo(Modality to) {
+   void setTo(Modality to) {
       this.to = to;
    }
 }

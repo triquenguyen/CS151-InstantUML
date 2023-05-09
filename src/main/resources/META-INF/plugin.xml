@@ -13,6 +13,13 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.java</depends>
 
+    <applicationListeners>
+        <listener
+            class="listeners.ThemeInfo"
+            topic="com.intellij.ide.ui.LafManagerListener">
+        </listener>
+    </applicationListeners>
+
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <toolWindow id="InstantUML"

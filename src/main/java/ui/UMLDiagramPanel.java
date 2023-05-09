@@ -1,108 +1,139 @@
 package ui;
 
 import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.wm.*;
+import com.intellij.openapi.wm.impl.ToolWindowManagerImpl;
+import com.intellij.ui.content.ContentFactory;
+import com.mxgraph.layout.hierarchical.mxHierarchicalLayout;
+import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxGeometry;
+import com.mxgraph.model.mxGraphModel;
+import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
+import com.mxgraph.view.mxStylesheet;
 import graphing.Box;
 import graphing.Field;
 import graphing.Method;
 import graphing.UMLMap;
+import listeners.ThemeInfo;
+
 import javax.swing.*;
 
-import guru.nidi.graphviz.attribute.*;
-import guru.nidi.graphviz.engine.*;
-import guru.nidi.graphviz.model.*;
-
-import static guru.nidi.graphviz.model.Factory.*;
-import static guru.nidi.graphviz.attribute.Records.*;
-import guru.nidi.graphviz.model.MutableNode;
-
-
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import java.util.List;
 
 public class UMLDiagramPanel extends JPanel {
 
-   private MutableGraph mutableGraph;
-   private HashMap<String, NodePair> graphNodes;
-   private BufferedImage graphImage;
    private UMLMap map;
+   private mxGraph graph;
+   private List<mxCell> cells;
 
    public UMLDiagramPanel(UMLMap map) {
       this.map = map;
-      mutableGraph = mutGraph("diagram").setDirected(true)
-              .graphAttrs().add(Rank.dir(Rank.RankDir.TOP_TO_BOTTOM));
-      graphNodes = new HashMap<>();
+      graph = new mxGraph();
+      cells = new ArrayList<>();
 
-      // Add the nodes to the graph
-      for (Map.Entry<String, Box> entry : map.getEntrySet()) {
-         Box fileClass = entry.getValue();
-         MutableNode graphNode = createNode(fileClass);
-         mutableGraph.add(graphNode);
+      graph.getModel().beginUpdate();
+      graph.setHtmlLabels(true);
+      graph.setCellsResizable(true);
+      graph.setAutoSizeCells(true);
+      graph.setCellsSelectable(true);
+      graph.setCellsEditable(false);
+      graph.setModel(new mxGraphModel());
 
-         graphNodes.put(entry.getKey(),
-                 new NodePair(graphNode, entry.getValue()));
-/*         for (Edge edge : fileClass.getAdjList())
-            graphNode.linkTo(findNode(edge.getBox()));*/
-      }
+      try {
 
-      // Add node links
-      for (Map.Entry<String, NodePair> entry : graphNodes.entrySet()) {
-         MutableNode graphNode = entry.getValue().vizNode;
-         Box box = entry.getValue().box;
-
-         for (Box.Edge edge : box.getAdjList()) {
-            Link link = Link.to(graphNodes.get(edge.getBox().getName()).vizNode);
-            mutableGraph.addLink(graphNode.addLink(link));
+         // Add all boxes
+         for (Box box : map.boxList()) {
+            mxCell cell = newVertex(box); // Create new diagram box
+            graph.addCell(cell);          // Add the box to graph
+            graph.updateCellSize(cell);   // Update based on the contents
+            box.setVisualVertex(cell);
          }
-            // graphNode.linkTo(graphNodes.get(edge.getBox().getName()).vizNode);
+
+         // Add all connections
+         for (Box box : map.boxList()) {
+            for (Box.Edge edge : box.getPublicAdjList()) {
+               mxCell connector = new mxCell();
+               connector.setValue(null);
+               connector.setStyle(edge.getConnector().getConnectorStyle());
+
+               mxCell from = box.getVisualVertex();
+               mxCell to = edge.getToBox().getVisualVertex();
+               connector.setEdge(true);
+               connector.setConnectable(true);
+
+               connector.setSource(from);
+               connector.setTarget(to);
+               graph.addCell(connector);
+            }
+         }
+      }
+      finally {
+         graph.getModel().endUpdate();
       }
 
+      // Define the layout
+      mxHierarchicalLayout layout = new mxHierarchicalLayout(graph);
+      layout.execute(graph.getDefaultParent());
 
-/*      for (MutableNode graphNode : graphNodeSet)
-         mutableGraph.add(graphNode);*/
+      // Wrap graph in component
+      mxGraphComponent graphComponent = new mxGraphComponent(graph);
+      graphComponent.getViewport().setBackground(Color.decode("#"
+              + ThemeInfo.getBackGroundColor()));
+      graphComponent.setConnectable(false);
+      graphComponent.setDragEnabled(false);
+      graphComponent.setToolTips(true);
 
-      // Set the graph image
-      graphImage = Graphviz.fromGraph(mutableGraph).width(1080)
-              .render(Format.PNG).toImage();
-      add(new JLabel(new ImageIcon(graphImage)));
+      add(graphComponent);
 
       PluginToolWindowContentPanel.addDiagramPanel(this);
    }
 
-   public MutableNode createNode(Box fileClass) {
-      // Initiate CLass Name
-      String className = fileClass.getBoxType() + "\n" + fileClass.getName();
+   private mxCell newVertex(Box box) {
 
-      // Handle attributes
-      StringBuilder attributes = new StringBuilder();
-      for (Field attr : fileClass.getFields())
-         attributes.append(String.format("%s%n", attr));
+      StringBuilder value = new StringBuilder();
 
-      // Handle Methods
-      StringBuilder methods = new StringBuilder();
-      for (Method method : fileClass.getMethods())
-         methods.append(String.format("%s%n", method));
+      // Set header
+      value.append(String.format("<p style=\"margin:0px;margin-top:4px;" +
+              "text-align:center;\"><b>%s</b></p>", box.getHeader()));
+      value.append("<hr size=1/>");
+      value.append(String.format("<p style=margin:0px;margin-left:4px;" +
+              ">%s</p>", box.getAllFields()));
+      value.append("<hr size=1/>");
+      value.append(String.format("<p style=margin:0px;margin-left:4px;>%s</p>",
+              box.getAllMethods()));
 
-      return mutNode(className).add(Font.size(24), Shape.BOX,
-              Records.of(turn(rec(className),
-                      rec(attributes.toString())
-                      , rec(methods.toString()))));
+      mxCell result = new mxCell();
+      result.setValue(value.toString());
+      result.setGeometry(new mxGeometry(0, 0, 160, 90));
+      result.setStyle(
+              String.format("verticalAlign=top;align=left;overflow=fill;" +
+                      "fontSize=12;" +
+                      "html=1;whiteSpace=wrap;fillColor=%s;" +
+                              "fontFamily=Helvetica;fontColor=black;",
+                      "#ffffff"));
+      result.setVertex(true);
+
+      return result;
    }
 
-   private class NodePair {
+   public void addToolWindow() {
 
-      private MutableNode vizNode;
-      private Box box;
+/*      ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
 
-      public NodePair(MutableNode vizNode, Box box) {
-         this.vizNode = vizNode;
-         this.box = box;
-      }
+      ToolWindowManager manager = ToolWindowManager
+              .getInstance(ProjectManager.getInstance().getDefaultProject());
+
+      ToolWindow toolWindow = manager.registerToolWindow(
+              new RegisterToolWindowTask("tool", ToolWindowAnchor.LEFT,
+                      this, true, true,
+                      true, "", contentFactory,
+                      null));*/
    }
 
-/*   public MutableNode findNode(Box fileClass) {
-      if (!graphNodeSet.contains(mutNode(fileClass.getName())))
-         return createNode(fileClass);
-      else
-         return mutNode(fileClass.getName());
-   }*/
+
 }

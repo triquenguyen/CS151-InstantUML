@@ -1,9 +1,11 @@
 package graphing;
 
-import graphing.enums.AccessModifier;
+import com.mxgraph.model.mxCell;
 import graphing.enums.BoxType;
+import graphing.enums.ConnectorType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,12 +16,13 @@ import java.util.List;
 public class Box {
 
    private String name;
+   private String dataTypeID;
    private BoxType boxType;
    private List<Field> fields;
    private List<Method> methods;
-   private ArrayList<Edge> adjList; // outGoing
+   private LinkedList<Edge> adjList; // outGoing
+   private mxCell visualVertex;
    private int inDegree;
-   private LinkedList<String> potentialConnections;
 
    /**
     * Default constructor for Box
@@ -29,8 +32,7 @@ public class Box {
       this.fields = new ArrayList<>();
       this.methods = new ArrayList<>();
       inDegree = 0;
-      adjList = new ArrayList<>();
-      potentialConnections = new LinkedList<>();
+      adjList = new LinkedList<>();
    }
 
    /**
@@ -41,7 +43,7 @@ public class Box {
     * @param methods      The methods in the box
     */
    public Box(BoxType boxType,
-              List<Field> fields, List<Method> methods) {
+              List<Field> fields, List<Method> methods, String name) {
       this.boxType = boxType;
       this.fields = fields;
       inDegree = 0;
@@ -58,7 +60,7 @@ public class Box {
    /**
     * Setter for boxType
     */
-   public void setBoxType(BoxType boxType) {
+   void setBoxType(BoxType boxType) {
       this.boxType = boxType;
    }
 
@@ -75,7 +77,7 @@ public class Box {
     *
     * @param fields    A list of Fields
     */
-   public void setFields(List<Field> fields) {
+   void setFields(List<Field> fields) {
       this.fields = fields;
    }
 
@@ -84,7 +86,7 @@ public class Box {
     *
     * @param field
     */
-   public void addField(Field field) {
+   void addField(Field field) {
       fields.add(field);
    }
 
@@ -100,7 +102,7 @@ public class Box {
     *
     * @param methods    A list of Methods.
     */
-   public void setMethods(List<Method> methods) {
+   void setMethods(List<Method> methods) {
       this.methods = methods;
    }
 
@@ -112,32 +114,70 @@ public class Box {
    /**
     * Adds one method to the method.
     */
-   public void addMethod(Method method) {
+   void addMethod(Method method) {
       methods.add(method);
-   }
-
-   void addPotentialConnection(String className) {
-      potentialConnections.add(className);
-   }
-
-   LinkedList<String> getPotentialConnections() {
-      return potentialConnections;
    }
 
    void addConnection(Box box, Connector connection) {
       adjList.add(new Edge(box, connection));
    }
 
-   public String getName() {
+   /**
+    * Intended for generalization
+    */
+   void addPotentialConnection(String boxID, Connector nestOrGen) {
+      adjList.add(new Edge(boxID, nestOrGen));
+   }
+
+   String getName() {
       return name;
    }
 
-   public void setName(String name) {
+   void setName(String name) {
       this.name = name;
    }
 
-   public ArrayList<Edge> getAdjList() {
+   void setDataTypeID(String dataTypeID) {
+      this.dataTypeID = dataTypeID;
+   }
+
+   String getDataTypeID() {
+      return dataTypeID;
+   }
+
+   LinkedList<Edge> getAdjList() {
       return adjList;
+   }
+
+   public List<Edge> getPublicAdjList() {
+      List<Edge> result = adjList;
+      return result;
+   }
+
+   public String getAllFields() {
+      StringBuilder result = new StringBuilder();
+      for (Field field : fields)
+         result.append(field.toString());
+      return result.toString();
+   }
+
+   public String getAllMethods() {
+      StringBuilder result = new StringBuilder();
+      for (Method method : methods)
+         result.append(method.toString());
+      return result.toString();
+   }
+
+   public String getHeader() {
+      return String.format("%s%s", boxType.toString(), name);
+   }
+
+   public mxCell getVisualVertex() {
+      return visualVertex;
+   }
+
+   public void setVisualVertex(mxCell visualVertex) {
+      this.visualVertex = visualVertex;
    }
 
    /**
@@ -145,31 +185,48 @@ public class Box {
     */
    public class Edge {
 
-      private Box box;
+      private String toID;
+      private Box toBox;
       private Connector connector;
 
       /**
        * @param box        A box already existing in the map
        * @param connector  The connection that the from node has to the to node
        */
-      public Edge(Box box, Connector connector) {
-         this.box = box;
+      Edge(Box box, Connector connector) {
+         this.toBox = box;
          this.connector = connector;
       }
 
-      public Box getBox() {
-         return box;
+      Edge(String toID, Connector connector) {
+         this.toID = toID;
+         this.connector = connector;
       }
 
-      public void setBox(Box box) {
-         this.box = box;
+      boolean confirmGeneralization(HashMap<String, Box> map) {
+         if (map.containsKey(toID)) {
+            toBox = map.get(toID);
+            return true;
+         }
+         return false;
+      }
+
+      boolean addNesting(HashMap<String, Box> map) {
+         if (connector.equals(ConnectorType.NESTED)) {
+            toBox = map.get(toID);
+            return true;
+         }
+         return false;
+      }
+      public Box getToBox() {
+         return toBox;
       }
 
       public Connector getConnector() {
          return connector;
       }
 
-      public void setConnector(Connector connector) {
+      void setConnector(Connector connector) {
          this.connector = connector;
       }
    }
