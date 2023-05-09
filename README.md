@@ -101,7 +101,7 @@ Assuming that the user has already downloaded/updated their [IntelliJ](https://w
 ### Location of InstantUML Sidebar
 ![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/30f1b8fc-09d6-4164-ad14-7816dd8553b4)
 ### Preview generation of example package
-![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/3eb9a280-42cd-42f1-a97a-e19c4b6edd5a)
+![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/a5fb8cc5-074e-4a50-9e91-c4dd72f174b3)
 
 
 
