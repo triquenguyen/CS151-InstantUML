@@ -86,7 +86,6 @@ To deal with the problems that the previous works have, the plugin was built in 
 Assuming that the user has already downloaded/updated their [IntelliJ](https://www.jetbrains.com/idea/)
 
 ### Setup
-- Download [Graphviz Package](https://graphviz.org/download/)
 - Download/Clone/Import this whole git into your IntelliJ and build the project
 - Ensure that project's Gradle settings are set to as is for the project
 - Disable any unneeded plugins through (Help -> Find Action -> Plugins)
@@ -101,6 +100,8 @@ Assuming that the user has already downloaded/updated their [IntelliJ](https://w
 ## Snapshots
 ### Location of InstantUML Sidebar
 ![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/30f1b8fc-09d6-4164-ad14-7816dd8553b4)
-### Preview generation of example package found in test folder
-![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/35dadbbd-6c9e-49a0-bf3b-263c9a1dc59b)
+### Preview generation of example package
+![image](https://github.com/triquenguyen/CS151-InstantUML/assets/99629758/3eb9a280-42cd-42f1-a97a-e19c4b6edd5a)
+
+
 
