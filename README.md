@@ -37,7 +37,7 @@
 | Diagram | Summary |
 | ------- | --------------------- |
 | [Class Diagram](./diagrams/Class%20Diagram.drawio.png) | Edit |
-| [State Diagram](./diagrams/State%20Diagram.drawio.png) | Edit |
+| [State Diagram](./diagrams/State%20Diagram.png) | Edit |
 | [Use Case Diagram](./diagrams/Use_Case_Diagram.drawio.png) | Edit | 
 | [Sequence Diagram](./diagrams/SequenceDiagram.drawio.png)| Edit |
 <!-- Use if need images
