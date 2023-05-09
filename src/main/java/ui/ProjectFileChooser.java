@@ -86,7 +86,7 @@ public class ProjectFileChooser extends DialogWrapper {
                getTextRenderer().append(value.toString());
             }
             else {
-               getTextRenderer().setIcon(PlatformIcons.FILE_ICON);
+               getTextRenderer().setIcon(PlatformIcons.SOURCE_FOLDERS_ICON);
                getTextRenderer().append(value.toString());
             }
          }}, root);

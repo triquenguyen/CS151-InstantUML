@@ -7,8 +7,16 @@ import graphing.enums.AccessModifier;
  */
 public class Field extends BoxData {
 
-   Field(String name, AccessModifier accessModifier, String dataType) {
+   private String typeID;
+
+   Field(String name, AccessModifier accessModifier, String dataType,
+         String typeID) {
       super(name, accessModifier, dataType);
+      this.typeID = typeID;
+   }
+
+   String getTypeID() {
+      return typeID;
    }
 
    /**
@@ -17,7 +25,7 @@ public class Field extends BoxData {
     */
    @Override
    public String toString() {
-      return String.format("%s %s:%s", getAccessModifier().toString(),
+      return String.format("%s %s:%s<br>", getAccessModifier().toString(),
               getName(), getDataType());
    }
 

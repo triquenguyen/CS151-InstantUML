@@ -6,12 +6,7 @@ import graphing.enums.BoxType;
 import graphing.enums.ConnectorType;
 import ui.UMLDiagramPanel;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
-import java.lang.reflect.*;
 
 /**
  * Stores data from Java classes.  Uses javap command to collect data from the
@@ -20,11 +15,11 @@ import java.lang.reflect.*;
  */
 public class UMLMap {
 
-   private LinkedHashMap<String, Box> map; // Outgoing map
+   private HashMap<String, Box> map; // Outgoing map
 
 
    public UMLMap(PsiJavaFileImpl[] classes) {
-      map = new LinkedHashMap<>();
+      map = new HashMap<>();
       populateMap(classes);
       new UMLDiagramPanel(this);
    }
@@ -43,22 +38,26 @@ public class UMLMap {
 
          Box current = entry.getValue();
 
-         // Add generalization
-         for (String className : current.getPotentialConnections())
-            if (map.containsKey(className)) {
-               Box toBox = map.get(className);
-               toBox.incrementInDegree();
-               current.addConnection(toBox,
-                       new Connector(ConnectorType.GENERALIZATION));
-            }
+         // Add Nesting
+         for (Box.Edge edge : current.getAdjList())
+            edge.addNesting(map);
+
+         // Check for generalization
+         for (Iterator<Box.Edge> itr = current.getAdjList().iterator(); itr.hasNext(); ) {
+            Box.Edge edge = itr.next();
+            if (!edge.confirmGeneralization(map))
+               itr.remove(); // Not in diagram
+            else
+               edge.getToBox().incrementInDegree(); // indeg++
+         }
 
          // Add association
-         String dataType = null;
          for (Field field : current.getFields()) {
-            dataType = field.getDataType();
-            if (map.containsKey(dataType)
-                    && !dataType.equals(current.getName())) {
-               Box toBox = map.get(dataType);
+            String fieldID = field.getTypeID();
+            if (map.containsKey(fieldID)
+                    && !fieldID.equals(current.getDataTypeID())) {
+
+               Box toBox = map.get(fieldID);
                toBox.incrementInDegree();
                current.addConnection(toBox,
                        new Connector(ConnectorType.ASSOCIATION));
@@ -88,11 +87,12 @@ public class UMLMap {
 
       Box box = new Box();
       box.setName(clazz.getName());
+      box.setDataTypeID(clazz.getQualifiedName());
 
       // Check for nesting
       if (clazz.getContainingClass() != null) {
-         box.addConnection(map.get(clazz.getContainingClass().getName()),
-                 new Connector(ConnectorType.NESTED));
+         box.addPotentialConnection(clazz.getContainingClass()
+                 .getQualifiedName(), new Connector(ConnectorType.NESTED));
       }
 
       // set BoxType
@@ -102,7 +102,8 @@ public class UMLMap {
       for (PsiField psiField : clazz.getFields()) {
          Field field = new Field(psiField.getName(),
                  findAccessModifier(psiField),
-                 psiField.getType().getPresentableText());
+                 psiField.getType().getPresentableText(),
+                 psiField.getType().getCanonicalText());
          box.addField(field);
       }
 
@@ -116,11 +117,12 @@ public class UMLMap {
          box.addMethod(method);
       }
 
-      // Check for potential connections
-      for (PsiClassType type : clazz.getSuperTypes())
-         box.addPotentialConnection(type.getClassName());
+      // Check for potential generalization
+      for (PsiClass type : clazz.getSupers())
+         box.addPotentialConnection(type.getQualifiedName(),
+                 new Connector(ConnectorType.GENERALIZATION));
 
-      map.put(box.getName(), box);
+      map.put(box.getDataTypeID(), box);
    }
 
 
@@ -146,10 +148,14 @@ public class UMLMap {
          box.setBoxType(BoxType.CLASS);
    }
 
-   /**
-    * @return   The Entry set for the internal map.
-    */
-   public Set<Map.Entry<String, Box>> getEntrySet() {
-      return map.entrySet();
+   public List<Box> boxList() {
+
+      List<Box> list = new ArrayList<>();
+
+      for (Map.Entry<String, Box> entry : map.entrySet())
+         list.add(entry.getValue());
+
+      return list;
    }
+
 }
