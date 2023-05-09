@@ -17,7 +17,7 @@
 | ------- | --------------------- |
 | Reece Kim | Worked on the structure of the project. <br> Maintained the gradle.build file. <br> Maintained the plugin.xml file. <br> Coded everything except the part the build the displayed graph in DiagramPanel.java |
 | Trique Nguyen | Researched and experimented  on GraphViz API <br> Implement GraphViz to generate the diagram <br> Display the diagram on the plugin user interface |
-| Brian Pham | Overlooked code <br> Stylized/Check report <br> Updated Diagram(s) | 
+| Brian Pham | Overlook/Review code <br> Stylized/Check report <br> Updated needed Diagram(s) | 
 
 ## Survey on previous works and their problems/issues
 - [IntelliJ Ultimate](https://www.jetbrains.com/idea/business/) [1]:
@@ -87,7 +87,7 @@ Assuming that the user has already downloaded/updated their [IntelliJ](https://w
 
 ### Setup
 - Download [Graphviz Package](https://graphviz.org/download/)
-- Download/Clone/Export this whole git into your IntelliJ and build the project
+- Download/Clone/Import this whole git into your IntelliJ and build the project
 - Ensure that project's Gradle settings are set to as is for the project
 - Disable any unneeded plugins through (Help -> Find Action -> Plugins)
 
@@ -99,4 +99,4 @@ Assuming that the user has already downloaded/updated their [IntelliJ](https://w
 - After generating, the image will be displayed in that very same sidebar window underneath the button operations.
 
 ## Snapshots
-
+Demonstration of the plugin:
